@@ -42,24 +42,27 @@ L =  100.#   200#
 
 dir2 = str(L)+'Mpc'
 dir3 = str(ngr)
+snapID = '050'
 
 #==============================================================================
 
 
-dir4 = './GadgetSnapshots/'    # for z = 0           
-fn1 = str(int(L))+'Mpc128/'                  
+
+fn1 = '../'                  
 #fileName = fn1+dir2+dir3+'_z0'  
-fileIn = 'snapshot_050'
+fileIn = 'snapshot_' + snapID
 
 #fileIn = 'ics1'
 #fileIn = 'snap100Mpc128_z0'
-fileIn = dir4+fn1+fileIn
+fileIn = fn1+fileIn
 
 fsIC =  pynbody.load(fileIn)
 
+
+parameters(fsIC)
 print '---------------------------------------------------------'
 print
-print dir2, dir3, dir4, np.shape(fsIC['pos'])
+print  np.shape(fsIC['pos'])
 
 posIC = fsIC['pos']/1000
 indIC = fsIC['iord']
@@ -258,14 +261,14 @@ print '========================'
 #dirO = dirOut+dir2+'/'+dir3+'/'+dir4
 
 #x0_3d = np.reshape(x0_1d, (ngr,ngr,ngr),order='C')
-fileOut = 'npy/'+fn1+'x0_'+'snap_050.npy'
+fileOut = 'npy/'+fn1+'x0_'+'snap_' + snapID + '.npy'
 np.save(fileOut,x0_3d)
-fileOut = 'npy/'+fn1+'x1_'+'snap_050.npy'
+fileOut = 'npy/'+fn1+'x1_'+'snap_' + snapID + '.npy'
 np.save(fileOut,x1_3d)
-fileOut = 'npy/'+fn1+'x2_'+'snap_050.npy'
+fileOut = 'npy/'+fn1+'x2_'+'snap_' + snapID + '.npy'
 np.save(fileOut,x2_3d)
 
-fileOut = 'npy/'+fn1+'flip_'+'snap_050.npy'
+fileOut = 'npy/'+fn1+'flip_'+'snap_' + snapID + '.npy'
 np.save(fileOut,flip_3d)
 
 #fileOut = 'npy/pot_'+'snap_051.npy'
@@ -320,11 +323,11 @@ print '---------------------------------------------------------'
 
 
 
-fileOut = 'npy/'+fn1+'s0_'+'snap_050.npy'
+fileOut = 'npy/'+fn1+'s0_'+'snap_' + snapID + '.npy'
 np.save(fileOut,dx0)
-fileOut = 'npy/'+fn1+'s1_'+'snap_050.npy'
+fileOut = 'npy/'+fn1+'s1_'+'snap_' + snapID + '.npy'
 np.save(fileOut,dx1)
-fileOut = 'npy/'+fn1+'s2_'+'snap_050.npy'
+fileOut = 'npy/'+fn1+'s2_'+'snap_' + snapID + '.npy'
 np.save(fileOut,dx2)
 
 
