@@ -12,8 +12,8 @@ radius = intervals[1:]
 #radius = intervals[1:]
 
 
-m_profile = np.load('/Users/Yuyu/Halo/GADGET/fof-064-m_profile.npy')
-d_profile = np.load('/Users/Yuyu/Halo/GADGET/fof-064-d_profile.npy')
+m_profile = np.load('GADGET/fof-064-m_profile.npy')
+d_profile = np.load('GADGET/fof-064-d_profile.npy')
 
 m_aver = np.average(m_profile, axis=0)
 d_aver = np.average(d_profile, axis=0)
@@ -31,11 +31,32 @@ d_std = np.std(d_profile, axis=0)
 #plt.yscale("log", nonposy='clip')
 #plt.show()
 
-plt.figure()
-for h_num in range(50):
+cut = 0
+
+plt.figure(100)
+for h_num in range(50,150, 1):
     #plt.errorbar(radius, d_aver, yerr=d_std, color='r')
-    plt.plot(radius, d_profile[h_num])
+    plt.plot(radius[d_profile[h_num] > cut], d_profile[h_num][d_profile[h_num] > cut], 'ro-', alpha = 0.1, markersize = 3)
     #plt.scatter(radius, d_profile[h_num], color='r')
 plt.xscale("log", nonposx='clip')
 plt.yscale("log", nonposy='clip')
+
+
+for h_num in range(350,450,1):
+    #plt.errorbar(radius, d_aver, yerr=d_std, color='r')
+    plt.plot(radius[d_profile[h_num] > cut], d_profile[h_num][d_profile[h_num] > cut], 'bo:', alpha = 0.1, markersize = 3)
+    #plt.scatter(radius, d_profile[h_num], color='r')
+plt.xscale("log", nonposx='clip')
+plt.yscale("log", nonposy='clip')
+
+
+for h_num in range(900,1000,1):
+    #plt.errorbar(radius, d_aver, yerr=d_std, color='r')
+    plt.plot(radius[d_profile[h_num] > cut], d_profile[h_num][d_profile[h_num] > cut], 'go--', alpha = 0.1, markersize = 3)
+    #plt.scatter(radius, d_profile[h_num], color='r')
+plt.xscale("log", nonposx='clip')
+plt.yscale("log", nonposy='clip')
+
+print d_profile[500]
+
 plt.show()

@@ -140,16 +140,16 @@ def halo_profile(pos, intervals, radius):
     return mass_profile, density_profile
     
 
-fName = '/Users/Yuyu/Halo/GADGET/groups_catalogue/fof_special_catalogue_064'
+fName = 'GADGET/groups_catalogue/fof_special_catalogue_064'
 
 
 aGroupLen, aGroupOffset, aGroupMass, aGroupCM, aGroupNspecies, aGroupSfr = read_groups_catalogue(fName)
 
-fName1 = '/Users/Yuyu/Halo/GADGET/groups_particles/fof_special_particles_064'
+fName1 = 'GADGET/groups_particles/fof_special_particles_064'
 
 aPos, aNtot = read_groups_particles(fName1)
 
-fName2 = '/Users/Yuyu/Halo/GADGET/groups_indexlist/fof_special_indexlist_064'
+fName2 = 'GADGET/groups_indexlist/fof_special_indexlist_064'
 
 ntot, idx = read_groups_indexlist(fName2)
 
@@ -193,6 +193,6 @@ for i in range(len(group_id)):
     m_profile[i] = profile[0]
     d_profile[i] = profile[1]
     
-np.save('/Users/Yuyu/Halo/GADGET/fof-064-m_profile', m_profile)
-np.save('/Users/Yuyu/Halo/GADGET/fof-064-d_profile', d_profile)
+np.save('GADGET/fof-064-m_profile', m_profile)
+np.save('GADGET/fof-064-d_profile', d_profile)
   
