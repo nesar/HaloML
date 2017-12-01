@@ -10,11 +10,13 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
 from keras.preprocessing.text import Tokenizer
 
-max_words = 1000
+max_words = 100 # 1000
 batch_size = 32
-epochs = 5
+epochs = 5 # 5
 
 print('Loading data...')
+
+# x_train = density profile. 
 (x_train, y_train), (x_test, y_test) = reuters.load_data(num_words=max_words,
                                                          test_split=0.2)
 print(len(x_train), 'train sequences')
@@ -29,6 +31,11 @@ x_train = tokenizer.sequences_to_matrix(x_train, mode='binary')
 x_test = tokenizer.sequences_to_matrix(x_test, mode='binary')
 print('x_train shape:', x_train.shape)
 print('x_test shape:', x_test.shape)
+
+
+#x_train: #haloes, #bin   -- data
+#y_train: #haloes    -- label
+
 
 print('Convert class vector to binary class matrix '
       '(for use with categorical_crossentropy)')
