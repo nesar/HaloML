@@ -10,7 +10,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
 from keras.preprocessing.text import Tokenizer
 
-max_words = 100 # 1000
+max_words = 10 # 1000
 batch_size = 32
 epochs = 5 # 5
 
@@ -65,3 +65,6 @@ score = model.evaluate(x_test, y_test,
                        batch_size=batch_size, verbose=1)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
+print('---------------------------')
+
+a = model.predict(x_test)

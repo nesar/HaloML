@@ -57,6 +57,6 @@ for h_num in range(900,1000,1):
 plt.xscale("log", nonposx='clip')
 plt.yscale("log", nonposy='clip')
 
-print d_profile[500]
+print d_profile[50]
 
 plt.show()
