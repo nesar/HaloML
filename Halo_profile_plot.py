@@ -62,10 +62,14 @@ print('d_profile[50]')
 
 ## --------------- Adding new list --------------
 d_profile_list = []
-for h_num in range(900,1000,1):
-    d_profile_list.append(d_profile[h_num][d_profile[h_num] > cut])
+for h_num in range(0,1000,1):
+    d_profile_list.append(d_profile[h_num][d_profile[h_num] > cut].tolist())
 
 print(d_profile_list)
+
+import json
+with open('density_profile.txt', 'w') as outfile:
+    json.dump(d_profile_list, outfile)
 
 
 
