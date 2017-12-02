@@ -49,15 +49,24 @@ for h_num in range(350,450,1):
 plt.xscale("log", nonposx='clip')
 plt.yscale("log", nonposy='clip')
 
-d_profile_list = []
 for h_num in range(900,1000,1):
     #plt.errorbar(radius, d_aver, yerr=d_std, color='r')
     plt.plot(radius[d_profile[h_num] > cut], d_profile[h_num][d_profile[h_num] > cut], 'go--', alpha = 0.1, markersize = 3)
     #plt.scatter(radius, d_profile[h_num], color='r')
-    d_profile_list.append(d_profile[h_num][d_profile[h_num] > cut])
 plt.xscale("log", nonposx='clip')
 plt.yscale("log", nonposy='clip')
+plt.show()
 
 print('d_profile[50]')
+
+
+## --------------- Adding new list --------------
+d_profile_list = []
+for h_num in range(900,1000,1):
+    d_profile_list.append(d_profile[h_num][d_profile[h_num] > cut])
+
 print(d_profile_list)
-plt.show()
+
+
+
+
