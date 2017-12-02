@@ -60,7 +60,7 @@ plt.show()
 print('d_profile[50]')
 
 
-## --------------- Adding new list --------------
+## --------------- i/o list --------------
 d_profile_list = []
 for h_num in range(0,1000,1):
     d_profile_list.append(d_profile[h_num][d_profile[h_num] > cut].tolist())
@@ -71,6 +71,10 @@ import json
 with open('density_profile.txt', 'w') as outfile:
     json.dump(d_profile_list, outfile)
 
+
+with open('density_profile.txt') as json_data:
+    d = json.load(json_data)
+    print(d)
 
 
 
