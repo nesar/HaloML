@@ -9,6 +9,7 @@ from keras.datasets import reuters
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
 from keras.preprocessing.text import Tokenizer
+import json
 
 max_words = 10 # 1000
 batch_size = 32
@@ -16,7 +17,27 @@ epochs = 5 # 5
 
 print('Loading data...')
 
-# x_train = density profile. 
+# x_train = density profile.
+
+class density_profile:
+    def __init__(self, data_path, test_split = 0.2, num_para = 1):
+        self.data_path = data_path
+        self.num_para = num_para   # Just mass right now
+
+
+        self.x_train = []
+        self.y_train = []
+        self.x_test = []
+        self.y_test = []
+
+    def open_data(self):
+        with open('density_profile.txt') as json_data:
+        alldata = json.load(json_data)
+        print(alldata)
+
+
+
+
 (x_train, y_train), (x_test, y_test) = reuters.load_data(num_words=max_words, test_split=0.2)
 
 #x_train: #haloes, #bin   -- data
