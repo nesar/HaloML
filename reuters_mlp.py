@@ -84,6 +84,8 @@ print(len(x_test), 'test sequences')
 num_classes = np.max(y_train) + 1
 print(num_classes, 'classes')
 
+
+# Something is not right ------ all x_train, x_test = 0
 print('Vectorizing sequence data...')
 tokenizer = Tokenizer(num_words=max_words)
 x_train = tokenizer.sequences_to_matrix(x_train, mode='binary')
