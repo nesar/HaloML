@@ -86,7 +86,8 @@ with open('density_profile.txt', 'w') as outfile:
     json.dump(d_profile_list, outfile)
 
 
-halo_para = (1e10*np.abs(np.random.standard_normal(1000))).tolist()
+# halo_para = (1e10*np.abs(np.random.standard_normal(1000))).tolist()
+halo_para = np.random.randint(10, size = 1000).tolist()
 with open('halo_parameters.txt', 'w') as outfile:
     json.dump(halo_para, outfile)
 

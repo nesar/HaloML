@@ -35,24 +35,25 @@ class density_profile:
 
     def open_data(self):
         with open(self.data_path) as json_data:
-            allData = json.load(json_data)
+            self.allData = json.load(json_data)
 
         with open(self.para_path) as json_data:
-            allPara = json.load(json_data)
+            self.allPara = json.load(json_data)
         # print(alldata)
-        return allData, allPara
+        return self.allData, self.allPara
 
     def load_data(self): # randomize and split into train and test data
 
         allData, allPara = self.open_data()
         num_files = len(allData)
-        num_train = int(self.test_split*num_files)
+        num_train = int((1-self.test_split)*num_files)
 
-        random.seed(1234)
+        np.random.seed(1234)
         shuffleOrder = np.arange(num_files)
         np.random.shuffle(shuffleOrder)
-        allData = allData[shuffleOrder]
-        allPara = allPara[shuffleOrder]
+        allData = np.array(allData)[shuffleOrder]
+        allPara = np.array(allPara)[shuffleOrder]
+
 
         self.x_train = allData[0:num_train]
         self.y_train = allPara[0:num_train]
@@ -67,11 +68,12 @@ class density_profile:
 
 density_file = 'density_profile.txt'
 halo_para_file = 'halo_parameters.txt'
+dens = density_profile(data_path = density_file, para_path = halo_para_file)
 
-(x_train, y_train), (x_test, y_test) = density_profile.load_data(data_path = density_file, para_path = halo_para_file)
+(x_train, y_train), (x_test, y_test) = dens.load_data()
 
 
-(x_train, y_train), (x_test, y_test) = reuters.load_data(num_words=max_words, test_split=0.2)
+# (x_train, y_train), (x_test, y_test) = reuters.load_data(num_words=max_words, test_split=0.2)
 
 #x_train: #haloes, #bin   -- data
 #y_train: #haloes    -- label
