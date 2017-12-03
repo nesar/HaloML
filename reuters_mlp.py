@@ -11,7 +11,6 @@ from keras.layers import Dense, Dropout, Activation
 from keras.preprocessing.text import Tokenizer
 
 import json
-import random
 
 max_words = 10 # 1000
 batch_size = 32
