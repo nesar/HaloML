@@ -22,8 +22,9 @@ print('Loading data...')
 # x_train = density profile.
 
 class density_profile:
-    def __init__(self, data_path, test_split = 0.2, num_para = 1):
+    def __init__(self, data_path, para_path, test_split = 0.2, num_para = 1):
         self.data_path = data_path
+        self.para_path = para_path
         self.num_para = num_para   # Just mass right now
         self.test_split = test_split
 
@@ -33,23 +34,41 @@ class density_profile:
         self.y_test = []
 
     def open_data(self):
-        with open('density_profile.txt') as json_data:
-            alldata = json.load(json_data)
+        with open(self.data_path) as json_data:
+            allData = json.load(json_data)
+
+        with open(self.para_path) as json_data:
+            allPara = json.load(json_data)
         # print(alldata)
-        return alldata
+        return allData, allPara
 
-    def train_test_split(self): # randomize and split into train and test data
+    def load_data(self): # randomize and split into train and test data
 
-        alldata = self.open_data()
-        num_files = len(alldata)
+        allData, allPara = self.open_data()
+        num_files = len(allData)
         num_train = int(self.test_split*num_files)
 
         random.seed(1234)
         shuffleOrder = np.arange(num_files)
         np.random.shuffle(shuffleOrder)
+        allData = allData[shuffleOrder]
+        allPara = allPara[shuffleOrder]
+
+        self.x_train = allData[0:num_train]
+        self.y_train = allPara[0:num_train]
+
+        self.x_test = allData[num_train:num_files]
+        self.y_test = allPara[num_train:num_files]
+
+        return (self.x_train, self.y_train), (self.x_test, self.y_test)
 
 
 
+
+density_file = 'density_profile.txt'
+halo_para_file = 'halo_parameters.txt'
+
+(x_train, y_train), (x_test, y_test) = density_profile.load_data(data_path = density_file, para_path = halo_para_file)
 
 
 (x_train, y_train), (x_test, y_test) = reuters.load_data(num_words=max_words, test_split=0.2)
