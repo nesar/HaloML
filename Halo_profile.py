@@ -222,7 +222,7 @@ for i in range(len(group_id)):
     m_halo[i] = profile[3]
     #print r_200[i], m_halo[i]
     
-np.save('/Users/Yuyu/Halo/GADGET/fof-064-m_profile', m_profile)
-np.save('/Users/Yuyu/Halo/GADGET/fof-064-d_profile', d_profile)
-np.save('/Users/Yuyu/Halo/GADGET/fof-064-r_200', r_200)
-np.save('/Users/Yuyu/Halo/GADGET/fof-064-m_200', m_halo)
+np.save('GADGET/fof-064-m_profile', m_profile)
+np.save('GADGET/fof-064-d_profile', d_profile)
+np.save('GADGET/fof-064-r_200', r_200)
+np.save('GADGET/fof-064-m_200', m_halo)
