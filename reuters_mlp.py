@@ -12,9 +12,9 @@ from keras.preprocessing.text import Tokenizer
 
 import json
 
-max_words = 10 # 1000
+max_words = 100 # 1000
 batch_size = 32
-epochs = 5 # 5
+epochs = 100 # 5
 
 print('Loading data...')
 
@@ -115,7 +115,7 @@ model.compile(loss='categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
 
-history = model.fit(x_train, y_train,
+ModelFit = model.fit(x_train, y_train,
                     batch_size=batch_size,
                     epochs=epochs,
                     verbose=1,
@@ -125,5 +125,39 @@ score = model.evaluate(x_test, y_test,
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
 print('---------------------------')
+
+
+
+plotLossAcc = True
+if plotLossAcc:
+    import matplotlib.pylab as plt
+
+    train_loss= ModelFit.history['loss']
+    val_loss= ModelFit.history['val_loss']
+    train_acc= ModelFit.history['acc']
+    val_acc= ModelFit.history['val_acc']
+    epoch_array = range(1, epochs+1)
+
+
+    fig, ax = plt.subplots(2,1, sharex= True, figsize = (7,5))
+    fig.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace= 0.02)
+    ax[0].plot(epoch_array,train_loss)
+    ax[0].plot(epoch_array,val_loss)
+    ax[0].set_ylabel('loss')
+    # ax[0].set_ylim([0,1])
+    # ax[0].set_title('Loss')
+    ax[0].legend(['train_loss','val_loss'])
+
+
+    ax[1].plot(epoch_array,train_acc)
+    ax[1].plot(epoch_array,val_acc)
+    ax[1].set_ylabel('acc')
+    # ax[0].set_ylim([0,1])
+    # ax[0].set_title('Loss')
+    ax[1].legend(['train_acc','val_acc'])
+
+    plt.show()
+
+
 
 a = model.predict(x_test)
