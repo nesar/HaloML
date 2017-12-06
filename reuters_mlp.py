@@ -14,7 +14,7 @@ import json
 
 max_words = 100 # 1000
 batch_size = 32
-epochs = 100 # 5
+epochs = 25 # 5
 
 print('Loading data...')
 
