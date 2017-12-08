@@ -12,6 +12,8 @@ from keras.preprocessing.text import Tokenizer
 
 import json
 
+m_particle = 3.65e10
+
 max_words = 29 # 1000
 batch_size = 32
 epochs = 100 # 5
@@ -55,8 +57,8 @@ class density_profile:
         np.random.seed(1234)
         shuffleOrder = np.arange(num_files)
         np.random.shuffle(shuffleOrder)
-        allData = allData[shuffleOrder]
-        allPara1 = allPara1[shuffleOrder]
+        allData = allData[shuffleOrder]/m_particle
+        allPara1 = allPara1[shuffleOrder]/m_particle
         allPara2 = allPara2[shuffleOrder]
         allPara = np.dstack((allPara1, allPara2))[0]
         print (allPara.shape)
@@ -115,15 +117,17 @@ print(y_test.shape, 'test sequences')
 #
 print('Building model...')
 model = Sequential()
-model.add(Dense(512, input_shape=(max_words,)))
+model.add(Dense(2, input_shape=(max_words,)))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
 model.add(Dense(2))
-model.add(Activation('softmax'))
+#model.add(Activation('softmax'))
+model.add(Activation('linear'))
 
-model.compile(loss='categorical_crossentropy',
-              optimizer='adam',
-              metrics=['accuracy'])
+#model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+model.compile(loss='mean_squared_error', optimizer='adam')
+
 
 ModelFit = model.fit(x_train, y_train,
                     batch_size=batch_size,
@@ -132,13 +136,14 @@ ModelFit = model.fit(x_train, y_train,
                     validation_split=0.1)
 score = model.evaluate(x_test, y_test,
                        batch_size=batch_size, verbose=1)
-print('Test score:', score[0])
-print('Test accuracy:', score[1])
+
+#print('Test score:', score[0])
+#print('Test accuracy:', score[1])
 print('---------------------------')
 
 
 
-plotLossAcc = True
+plotLossAcc = False
 if plotLossAcc:
     import matplotlib.pylab as plt
 
@@ -165,6 +170,27 @@ if plotLossAcc:
     # ax[0].set_ylim([0,1])
     # ax[0].set_title('Loss')
     ax[1].legend(['train_acc','val_acc'])
+
+    plt.show()
+
+
+plotLoss = True
+if plotLoss:
+    import matplotlib.pylab as plt
+
+    train_loss= ModelFit.history['loss']
+    val_loss= ModelFit.history['val_loss']
+    epoch_array = range(1, epochs+1)
+
+
+    fig, ax = plt.subplots(1,1, sharex= True, figsize = (7,5))
+    fig.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace= 0.02)
+    ax.plot(epoch_array,train_loss)
+    ax.plot(epoch_array,val_loss)
+    ax.set_ylabel('loss')
+    # ax[0].set_ylim([0,1])
+    # ax[0].set_title('Loss')
+    ax.legend(['train_loss','val_loss'])
 
     plt.show()
 

@@ -61,8 +61,8 @@ class density_profile:
         np.random.seed(1234)
         shuffleOrder = np.arange(num_files)
         np.random.shuffle(shuffleOrder)
-        allData = allData[shuffleOrder]/m_particle
-        allPara1 = allPara1[shuffleOrder]/m_particle
+        allData = allData[shuffleOrder]/(1e4*m_particle)
+        allPara1 = allPara1[shuffleOrder]/(1e4*m_particle)
         allPara2 = allPara2[shuffleOrder]
         allPara = np.dstack((allPara1, allPara2))[0]
         print (allPara.shape)
@@ -123,7 +123,7 @@ print('Building model...')
 model = Sequential()
 model.add(Dense(20, input_shape=(max_words,)))
 model.add(Activation('relu'))
-model.add(Dropout(0.1))
+model.add(Dropout(0.5))
 model.add(Dense(10))
 model.add(Activation('relu'))
 model.add(Dense(5))
@@ -206,5 +206,44 @@ if plotLoss:
     plt.show()
 
 
+#---- Testing -------
 
-a = model.predict(x_test)
+
+y_pred = model.predict(x_test)
+diff = np.abs(y_pred[:,0] - y_test[:,0])
+
+print('Difference min, max, mean, std, median')
+print(np.min(diff), np.max(diff), np.mean(diff), np.std(diff), np.median(diff))
+
+fig, ax = plt.subplots(2,1, figsize = (4,10))
+fig.subplots_adjust(left=0.2, bottom=None, right=None, top=None, wspace=None, hspace= 0.3)
+ax[0].scatter(y_pred[:,0], y_test[:,0])
+ax[0].set_ylabel('y_test[0] --- m200')
+ax[0].set_xlabel('y_pred[0]')
+
+ax[1].scatter(y_pred[:,1], y_test[:,1])
+ax[1].set_ylabel('y_test[1] --- r200')
+ax[1].set_xlabel('y_pred[1]')
+
+#plt.show()
+
+
+fig, ax = plt.subplots(2,1, figsize = (4,10))
+fig.subplots_adjust(left=0.2, bottom=None, right=None, top=None, wspace=None, hspace= 0.3)
+ax[0].scatter(y_test[:,0], y_pred[:,0]/y_test[:,0])
+ax[0].set_ylabel('pred/test --- m200')
+ax[0].set_xlabel('y_test[0]')
+#ax[0].set_ylim(0,2)
+
+ax[1].scatter(y_test[:,0], y_pred[:,1]/y_test[:,1])
+ax[1].set_ylabel('pred/test --- r200')
+ax[1].set_xlabel('y_test[1] --- m200')
+#ax[1].set_ylim(0,2)
+
+plt.show()
+
+
+
+
+
+ 
