@@ -12,15 +12,13 @@ from keras.preprocessing.text import Tokenizer
 from keras.optimizers import Adam
 
 #import json
-
-max_words = 29 # 1000
-batch_size = 32
-epochs = 200 # 5
-
 m_particle = 3.65235543e10
+max_words = 29 # 1000
 
+batch_size = 32
+epochs = 200 
 l_r = 0.001
-d_r = 0.005
+d_r = 0.05
 
 print('Loading data...')
 
