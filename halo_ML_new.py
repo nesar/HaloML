@@ -16,7 +16,7 @@ m_particle = 3.65235543e10
 max_words = 29 # 1000
 
 batch_size = 32
-epochs = 200 
+epochs = 10
 l_r = 0.001
 d_r = 0.05
 
@@ -238,7 +238,7 @@ if ScatterPred:
     ax[1].scatter(y_test[:,0], y_pred[:,1]/y_test[:,1])
     ax[1].set_ylabel('pred/test --- r200')
     ax[1].set_xlabel('y_test[1] --- m200')
-    ax.set_title('pred/test ratio variation with mass and radius')
+    ax[0].set_title('pred/test ratio variation with mass and radius')
 
     plt.show()
 
