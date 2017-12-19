@@ -205,27 +205,28 @@ if plotLoss:
 
 
 #---- Testing -------
+ScatterPredReal = True
+if ScatterPredReal:
+    y_pred = model.predict(x_test)
+    diff = np.abs(y_pred[:,0] - y_test[:,0])
+
+    print('Difference min, max, mean, std, median')
+    print(np.min(diff), np.max(diff), np.mean(diff), np.std(diff), np.median(diff))
+
+    fig, ax = plt.subplots(2,1, figsize = (4,10))
+    fig.subplots_adjust(left=0.2, bottom=None, right=None, top=None, wspace=None, hspace= 0.3)
+    ax[0].scatter(y_pred[:,0], y_test[:,0])
+    ax[0].set_ylabel('y_test[0] --- m200')
+    ax[0].set_xlabel('y_pred[0]')
+
+    ax[1].scatter(y_pred[:,1], y_test[:,1])
+    ax[1].set_ylabel('y_test[1] --- r200')
+    ax[1].set_xlabel('y_pred[1]')
+
+    plt.show()
 
 
-y_pred = model.predict(x_test)
-diff = np.abs(y_pred[:,0] - y_test[:,0])
-
-print('Difference min, max, mean, std, median')
-print(np.min(diff), np.max(diff), np.mean(diff), np.std(diff), np.median(diff))
-
-fig, ax = plt.subplots(2,1, figsize = (4,10))
-fig.subplots_adjust(left=0.2, bottom=None, right=None, top=None, wspace=None, hspace= 0.3)
-ax[0].scatter(y_pred[:,0], y_test[:,0])
-ax[0].set_ylabel('y_test[0] --- m200')
-ax[0].set_xlabel('y_pred[0]')
-
-ax[1].scatter(y_pred[:,1], y_test[:,1])
-ax[1].set_ylabel('y_test[1] --- r200')
-ax[1].set_xlabel('y_pred[1]')
-
-#plt.show()
-
-
+if
 fig, ax = plt.subplots(2,1, figsize = (4,10))
 fig.subplots_adjust(left=0.2, bottom=None, right=None, top=None, wspace=None, hspace= 0.3)
 ax[0].scatter(y_test[:,0], y_pred[:,0]/y_test[:,0])
