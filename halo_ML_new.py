@@ -238,7 +238,7 @@ if ScatterPred:
     ax[1].scatter(y_test[:,0], y_pred[:,1]/y_test[:,1])
     ax[1].set_ylabel('pred/test --- r200')
     ax[1].set_xlabel('y_test[1] --- m200')
-    #ax[1].set_ylim(0,2)
+    ax.set_title('pred/test ratio variation with mass and radius')
 
     plt.show()
 
