@@ -242,6 +242,20 @@ plt.show()
 
 
 
+fig, ax = plt.subplots(1,1, figsize = (5,5))
+fig.subplots_adjust(left=0.2, bottom=None, right=None, top=None, wspace=None, hspace= 0.3)
+ax.scatter(y_test[:,0], y_test[:,1], label = 'y_test')
+ax.set_ylabel('m200')
+ax.set_xlabel('r200')
+# ax.set_title()
+
+ax.scatter(y_pred[:,0], y_pred[:,1], label = 'y_pred')
+ax.set_ylabel('m200')
+ax.set_xlabel('r200')
+# ax.set_title()
+plt.legend()
+
+plt.show()
 
 
  

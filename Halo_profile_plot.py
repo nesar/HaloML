@@ -23,25 +23,50 @@ d_std = np.std(d_profile, axis=0)
 
 #h_num = 1
 
-#plt.figure()
-##plt.errorbar(radius, m_aver, yerr=m_std, color='b')
-#plt.plot(radius, m_profile[h_num], color='b')
-#plt.scatter(radius, m_profile[h_num], color='b')
-#plt.xscale("log", nonposx='clip')
-#plt.yscale("log", nonposy='clip')
-#plt.show()
+# plt.figure()
+# #plt.errorbar(radius, m_aver, yerr=m_std, color='b')
+# plt.plot(radius, m_profile[h_num], color='b')
+# plt.scatter(radius, m_profile[h_num], color='b')
+# plt.xscale("log", nonposx='clip')
+# plt.yscale("log", nonposy='clip')
+# plt.show()
 
 d_critical = 1.3598e11
 cut = 0
 
 plt.figure()
-for h_num in range(900,1100):
+for h_num in range(00,200):
     #plt.errorbar(radius, d_aver, yerr=d_std, color='r')
     dd = d_profile[h_num]
-    plt.plot(radius[dd> cut], dd[dd> cut]/d_critical)
+    plt.plot(radius[dd > cut], dd[dd > cut]/d_critical, color = 'r', alpha = 0.3)
     #plt.scatter(radius, d_profile[h_num], color='r')
 plt.xscale("log", nonposx='clip')
 plt.yscale("log", nonposy='clip')
+
+for h_num in range(201,500):
+    #plt.errorbar(radius, d_aver, yerr=d_std, color='r')
+    dd = d_profile[h_num]
+    plt.plot(radius[dd > cut], dd[dd > cut]/d_critical, color = 'b', alpha = 0.3)
+    #plt.scatter(radius, d_profile[h_num], color='r')
+plt.xscale("log", nonposx='clip')
+plt.yscale("log", nonposy='clip')
+
+for h_num in range(501,900):
+    #plt.errorbar(radius, d_aver, yerr=d_std, color='r')
+    dd = d_profile[h_num]
+    plt.plot(radius[dd > cut], dd[dd > cut]/d_critical, color = 'g', alpha = 0.3)
+    #plt.scatter(radius, d_profile[h_num], color='r')
+plt.xscale("log", nonposx='clip')
+plt.yscale("log", nonposy='clip')
+
+for h_num in range(901,1100):
+    #plt.errorbar(radius, d_aver, yerr=d_std, color='r')
+    dd = d_profile[h_num]
+    plt.plot(radius[dd > cut], dd[dd > cut]/d_critical, color = 'orange', alpha = 0.1)
+    #plt.scatter(radius, d_profile[h_num], color='r')
+plt.xscale("log", nonposx='clip')
+plt.yscale("log", nonposy='clip')
+
 plt.show()
 
 print('d_profile[50]')
