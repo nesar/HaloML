@@ -256,7 +256,7 @@ if JointDistribution:
     ax.scatter(y_pred[:,0], y_pred[:,1], label = 'y_pred')
     ax.set_ylabel('m200')
     ax.set_xlabel('r200')
-    # ax.set_title()
+    ax.set_title('Joint distribution')
     plt.legend()
 
     plt.show()
