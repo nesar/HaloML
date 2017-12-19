@@ -226,21 +226,24 @@ if ScatterPredReal:
     plt.show()
 
 
-if
-fig, ax = plt.subplots(2,1, figsize = (4,10))
-fig.subplots_adjust(left=0.2, bottom=None, right=None, top=None, wspace=None, hspace= 0.3)
-ax[0].scatter(y_test[:,0], y_pred[:,0]/y_test[:,0])
-ax[0].set_ylabel('pred/test --- m200')
-ax[0].set_xlabel('y_test[0]')
-#ax[0].set_ylim(0,2)
+ScatterPred= True
+if ScatterPred:
+    fig, ax = plt.subplots(2,1, figsize = (4,10))
+    fig.subplots_adjust(left=0.2, bottom=None, right=None, top=None, wspace=None, hspace= 0.3)
+    ax[0].scatter(y_test[:,0], y_pred[:,0]/y_test[:,0])
+    ax[0].set_ylabel('pred/test --- m200')
+    ax[0].set_xlabel('y_test[0]')
+    #ax[0].set_ylim(0,2)
 
-ax[1].scatter(y_test[:,0], y_pred[:,1]/y_test[:,1])
-ax[1].set_ylabel('pred/test --- r200')
-ax[1].set_xlabel('y_test[1] --- m200')
-#ax[1].set_ylim(0,2)
+    ax[1].scatter(y_test[:,0], y_pred[:,1]/y_test[:,1])
+    ax[1].set_ylabel('pred/test --- r200')
+    ax[1].set_xlabel('y_test[1] --- m200')
+    #ax[1].set_ylim(0,2)
 
-plt.show()
+    plt.show()
 
+
+JointDistribution = True
 
 
 fig, ax = plt.subplots(1,1, figsize = (5,5))
