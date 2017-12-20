@@ -84,11 +84,6 @@ dens = density_profile(data_path = density_file, para_path1 = halo_para_file1, p
 (x_train, y_train), (x_test, y_test) = dens.load_data()
 
 
-#(x_train, y_train), (x_test, y_test) = reuters.load_data(num_words=max_words, test_split=0.2)
-
-#x_train: #haloes, #bin   -- data
-#y_train: #haloes    -- label
-
 
 print(x_train.shape, 'train sequences')
 print(x_test.shape, 'test sequences')
@@ -244,7 +239,6 @@ if ScatterPred:
 
 
 JointDistribution = True
-
 if JointDistribution:
     fig, ax = plt.subplots(1,1, figsize = (5,5))
     fig.subplots_adjust(left=0.2, bottom=None, right=None, top=None, wspace=None, hspace= 0.3)
