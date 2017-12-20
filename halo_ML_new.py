@@ -1,14 +1,12 @@
 '''Trains and evaluate a simple MLP
-on the Reuters newswire topic classification task.
+based on the Reuters newswire topic classification task.
 '''
 from __future__ import print_function
 
 import numpy as np
 import keras
-from keras.datasets import reuters
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
-from keras.preprocessing.text import Tokenizer
 from keras.optimizers import Adam
 
 #import json
@@ -32,10 +30,6 @@ class density_profile:
         self.num_para = num_para   # Just mass right now
         self.test_split = test_split
 
-        #self.x_train = []
-        #self.y_train = []
-        #self.x_test = []
-        #self.y_test = []
 
     def open_data(self):                                                        
 #        with open(self.data_path) as json_data:
@@ -90,17 +84,7 @@ print(x_test.shape, 'test sequences')
 print(y_train.shape, 'train sequences')
 print(y_test.shape, 'test sequences')
 
-#num_classes = np.max(y_train) + 1
-#print(num_classes, 'classes')
 
-
-# Something is not right ------ all x_train, x_test = 0
-#print('Vectorizing sequence data...')
-#tokenizer = Tokenizer(num_words=max_words)
-#xx_train = tokenizer.sequences_to_matrix(x_train, mode='binary')
-#xx_test = tokenizer.sequences_to_matrix(x_test, mode='binary')
-#print('x_train shape:', x_train.shape)
-#print('x_test shape:', x_test.shape)
 
 # ------------------------------------------
 
