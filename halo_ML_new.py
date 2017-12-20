@@ -1,4 +1,5 @@
-'''Trains and evaluate a simple MLP
+'''
+Trains and evaluate a simple MLP
 based on the Reuters newswire topic classification task.
 '''
 from __future__ import print_function
