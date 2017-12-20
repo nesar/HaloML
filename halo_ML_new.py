@@ -27,7 +27,7 @@ class density_profile:
         self.data_path = data_path
         self.para_path1 = para_path1
         self.para_path2 = para_path2
-        self.num_para = num_para   # Just mass right now
+        self.num_para = num_para
         self.test_split = test_split
 
 
@@ -88,14 +88,6 @@ print(y_test.shape, 'test sequences')
 
 # ------------------------------------------
 
-#
-#print('Convert class vector to binary class matrix '
-#      '(for use with categorical_crossentropy)')
-#y_train = keras.utils.to_categorical(y_train, num_classes)
-#y_test = keras.utils.to_categorical(y_test, num_classes)
-#print('y_train shape:', y_train.shape)
-#print('y_test shape:', y_test.shape)
-#
 print('Building model...')
 model = Sequential()
 model.add(Dense(20, input_shape=(max_words,)))
@@ -107,10 +99,6 @@ model.add(Dense(5))
 model.add(Activation('relu'))
 model.add(Dense(2))
 model.add(Activation('linear'))
-
-#model.add(Activation('softmax'))
-
-#model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 adam = Adam(lr = l_r, decay = d_r)
 
@@ -125,8 +113,7 @@ ModelFit = model.fit(x_train, y_train,
 score = model.evaluate(x_test, y_test,
                        batch_size=batch_size, verbose=1)
 
-#print('Test score:', score[0])
-#print('Test accuracy:', score[1])
+
 print('---------------------------')
 
 
