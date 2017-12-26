@@ -117,11 +117,11 @@ score = model.evaluate(x_test, y_test,
 
 print('---------------------------')
 
+#--------------Testing----------------------------
 
-#---- Testing -------
 y_pred = model.predict(x_test)
 
-
+#-------------------------------------------------
 
 plotLossAcc = False
 if plotLossAcc:
