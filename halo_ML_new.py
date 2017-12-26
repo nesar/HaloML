@@ -170,11 +170,10 @@ if plotLoss:
 
     plt.show()
 
-
-#---- Testing -------
+#----------- Plot prediction vs truth ----------- 
 ScatterPredReal = True
 if ScatterPredReal:
-    y_pred = model.predict(x_test)
+    
     diff = np.abs(y_pred[:,0] - y_test[:,0])
 
     print('Difference min, max, mean, std, median')
