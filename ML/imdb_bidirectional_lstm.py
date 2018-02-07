@@ -13,7 +13,7 @@ from keras.layers import Dense, Dropout, Embedding, LSTM, Bidirectional
 from keras.datasets import imdb
 
 
-max_features = 20000
+max_features = 10000
 # cut texts after this number of words
 # (among top max_features most common words)
 maxlen = 100
