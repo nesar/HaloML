@@ -14,7 +14,7 @@ import json
 
 m_particle = 3.65e10
 
-max_words = 29 # 1000
+max_words = 30 # 1000
 batch_size = 32
 epochs = 100 # 5
 
@@ -73,10 +73,9 @@ class density_profile:
 
 
 
-
-density_file = 'fof-064-d_profile.npy'                                            
-halo_para_file1 = 'fof-064-m_200.npy'
-halo_para_file2 = 'fof-064-r_200.npy'
+density_file = 'Bolshoi_All_density_profile.npy'                                            
+halo_para_file1 = 'Bolshoi_mass.npy'
+halo_para_file2 = 'Bolshoi_Radius.npy'
 dens = density_profile(data_path = density_file, para_path1 = halo_para_file1, para_path2 = halo_para_file2)
 
 (x_train, y_train), (x_test, y_test) = dens.load_data()

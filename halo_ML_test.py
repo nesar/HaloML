@@ -15,9 +15,9 @@ m_particle = 1.35e8
 max_words = 30 # 1000
 
 batch_size = 32
-epochs = 10
-l_r = 0.002
-d_r = 0.001
+epochs = 100
+l_r = 1e-5
+d_r = 0
 
 print('Loading data...')
 
